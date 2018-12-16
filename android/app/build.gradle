@@ -136,15 +136,11 @@ android {
     }
 }
 
-repositories {
-    maven { url 'https://jitpack.io' }
-}
-
 dependencies {
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation 'com.android.support:design:27.1.0'
     implementation "com.facebook.react:react-native:+" 
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    implementation project(':react-native-charts-wrapper')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile project(':react-native-navigation')
     

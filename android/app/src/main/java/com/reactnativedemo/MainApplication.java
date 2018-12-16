@@ -2,6 +2,10 @@ package com.reactnativedemo;
 
 import com.reactnativenavigation.NavigationApplication;
 import com.facebook.react.ReactPackage;
+import com.github.wuxudong.rncharts.MPAndroidChartPackage;
+import com.facebook.react.bridge.ReadableNativeArray;
+import com.facebook.react.bridge.ReadableNativeMap;
+import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +22,7 @@ public class MainApplication extends NavigationApplication {
 		// Add additional packages you require here
 		// No need to add RnnPackage and MainReactPackage
 		return Arrays.<ReactPackage>asList(
-			// eg. new VectorIconsPackage()
+			new MPAndroidChartPackage() 
 		);
 	}
 
@@ -31,4 +35,13 @@ public class MainApplication extends NavigationApplication {
   public String getJSMainModuleName() {
 	  return "index";
   }
+
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    SoLoader.init(this, /* native exopackage */ false);
+    ReadableNativeArray.setUseNativeAccessor(true);
+    ReadableNativeMap.setUseNativeAccessor(true);
+  }
+
 }
