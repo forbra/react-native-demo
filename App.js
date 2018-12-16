@@ -11,6 +11,7 @@ Navigation.registerComponent("app.DetailScreen", () => DetailScreen);
 Navigation.startSingleScreenApp({
   screen: {
     screen: "app.MainScreen",
-    title: "Company Revenue"
+    title: "Company Revenue",
+    animated: true
   }
 });
