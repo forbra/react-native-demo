@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {FlatList, ActivityIndicator, Text, View, StyleSheet, Image } from 'react-native';
+import {FlatList, ActivityIndicator, Text, View, StyleSheet, Image, TouchableNativeFeedback } from 'react-native';
 
 export default class MainScreen extends Component {
     static navigatorStyle = {
@@ -35,6 +35,14 @@ export default class MainScreen extends Component {
           });
       }
 
+    clickHandler = () => {
+        this.props.navigator.push({
+            screen: "app.DetailScreen",
+            title: "Detail"
+        })       
+    };  
+
+
     render () {
         if(this.state.isLoading){
             return(
@@ -50,15 +58,17 @@ export default class MainScreen extends Component {
                     style={styles.flatList}
                     data={this.state.dataSource}
                     renderItem={({item}) => 
-                    <View style={styles.flatListContainer}>
-                        <View style={styles.flatListContainerCompanyInfo}>
-                            <Text style={styles.flatListContainerItemCompany}>{item.name}</Text>
-                            <Text style={styles.flatListContainerItemAddress}>{item.address.street}</Text>
-                            <Text style={styles.flatListContainerItemAddress}>{item.address.city}, {item.address.state}, {item.address.zip}</Text>
-                            <Text style={styles.flatListContainerItemAddress}>{item.phone}</Text>
+                    <TouchableNativeFeedback onPress={this.clickHandler} >
+                        <View style={styles.flatListContainer}>
+                            <View style={styles.flatListContainerCompanyInfo}>
+                                <Text style={styles.flatListContainerItemCompany}>{item.name}</Text>
+                                <Text style={styles.flatListContainerItemAddress}>{item.address.street}</Text>
+                                <Text style={styles.flatListContainerItemAddress}>{item.address.city}, {item.address.state}, {item.address.zip}</Text>
+                                <Text style={styles.flatListContainerItemAddress}>{item.phone}</Text>
+                            </View>
+                            <Image source={{uri: item.photo}} style={styles.flatListContainerCompanyPicture} />
                         </View>
-                        <Image source={{uri: item.photo}} style={styles.flatListContainerCompanyPicture} />
-                    </View>
+                    </TouchableNativeFeedback>
                 }
                 keyExtractor={({id}, index) => id}
               />
