@@ -18,7 +18,7 @@ export default class DetailScreen extends Component {
         return (
             <View style={{flex: 1}}>
             <View style={styles.container}>
-              <HorizontalBarChart style={styles.chart}
+              <HorizontalBarChart style={styles.chart} animation={{durationY: 1000}}  drawValueAboveBar={true}
                 data={{dataSets:[
                   {label: "Revenue",
                    config: {
@@ -58,9 +58,9 @@ export default class DetailScreen extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#F5FCFF'
+      backgroundColor: '#f5fcff'
     },
     chart: {
-      flex: 1
+      flex: 1,
     }
   });
