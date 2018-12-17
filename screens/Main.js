@@ -35,11 +35,25 @@ export default class MainScreen extends Component {
           });
       }
 
-    clickHandler = () => {
+    clickHandler = (companyName, revenue) => {
         this.props.navigator.push({
             screen: "app.DetailScreen",
-            title: "Detail"
-        })       
+            title: companyName,
+            passProps: {
+                jan: revenue[0].amount,
+                feb: revenue[1].amount,
+                mar: revenue[2].amount,
+                apr: revenue[3].amount,
+                may: revenue[4].amount,
+                jun: revenue[5].amount,
+                jul: revenue[6].amount,
+                aug: revenue[7].amount,
+                sep: revenue[8].amount,
+                oct: revenue[9].amount,
+                nov: revenue[10].amount,
+                dec: revenue[11].amount
+            }
+        }, )       
     };  
 
 
@@ -58,7 +72,7 @@ export default class MainScreen extends Component {
                     style={styles.flatList}
                     data={this.state.dataSource}
                     renderItem={({item}) => 
-                    <TouchableNativeFeedback onPress={this.clickHandler} >
+                    <TouchableNativeFeedback onPress={() => this.clickHandler(item.name + ' Revenue', item.revenue) } >
                         <View style={styles.flatListContainer}>
                             <View style={styles.flatListContainerCompanyInfo}>
                                 <Text style={styles.flatListContainerItemCompany}>{item.name}</Text>

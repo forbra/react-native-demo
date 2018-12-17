@@ -29,19 +29,19 @@ public class MainApplication extends NavigationApplication {
 	@Override
 	public List<ReactPackage> createAdditionalReactPackages() {
 		return getPackages();
-  }
+  	}
   
-  @Override
-  public String getJSMainModuleName() {
-	  return "index";
-  }
+  	@Override
+  	public String getJSMainModuleName() {
+	  	return "index";
+  	}
 
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    SoLoader.init(this, /* native exopackage */ false);
-    ReadableNativeArray.setUseNativeAccessor(true);
-    ReadableNativeMap.setUseNativeAccessor(true);
-  }
+  	@Override
+  	public void onCreate() {
+    	super.onCreate();
+    	SoLoader.init(this, /* native exopackage */ false);
+    	ReadableNativeArray.setUseNativeAccessor(true);
+    	ReadableNativeMap.setUseNativeAccessor(true);
+  	}
 
 }

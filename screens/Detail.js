@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {AppRegistry, StyleSheet, Text, View, processColor} from 'react-native';
-import {LineChart} from 'react-native-charts-wrapper';
+import {StyleSheet, View} from 'react-native';
+import HorizontalBarChart from 'react-native-charts-wrapper/lib/HorizontalBarChart';
 
 export default class DetailScreen extends Component {
     static navigatorStyle = {
@@ -8,16 +8,30 @@ export default class DetailScreen extends Component {
         navBarTranslucent: false,
         navBarTextFontSize: 25,
         navBarTextColor: 'white',
+        navBarButtonColor: 'white',
         navBarBackgroundColor: 'black'
       };
 
-
-    render () {
+  
+  
+    render () {   
         return (
             <View style={{flex: 1}}>
             <View style={styles.container}>
-              <LineChart style={styles.chart}
-                data={{dataSets:[{label: "demo", values: [{y: 1}, {y: 2}, {y: 1}]}]}}
+              <HorizontalBarChart style={styles.chart}
+                data={{dataSets:[{label: "Revenue", 
+                values: [{y: this.props.jan}, 
+                  {y: this.props.feb}, 
+                  {y: this.props.mar},
+                  {y: this.props.apr}, 
+                  {y: this.props.may}, 
+                  {y: this.props.jun}, 
+                  {y: this.props.jul}, 
+                  {y: this.props.aug}, 
+                  {y: this.props.sep},
+                  {y: this.props.oct}, 
+                  {y: this.props.nov}, 
+                  {y: this.props.dec}]}]}}
               />
             </View>
           </View>
